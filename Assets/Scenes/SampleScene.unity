@@ -7171,6 +7171,12 @@ PrefabInstance:
       objectReference: {fileID: 1413525779}
     - target: {fileID: 3877085513326278126, guid: 77aeb4afb1f971145baafd2a7e952bfa,
         type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 181357222195646351, guid: c933e96f0ee985240bead1b12d4af274,
+        type: 3}
+    - target: {fileID: 3877085513326278126, guid: 77aeb4afb1f971145baafd2a7e952bfa,
+        type: 3}
       propertyPath: _lineOfSights
       value: 
       objectReference: {fileID: 1370846638}

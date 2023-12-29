@@ -29,6 +29,9 @@ public class EnemyPatrol : MonoBehaviour {
         }
 
 
+        RotateEnemy();
+
+
     }
 
 
@@ -44,4 +47,19 @@ public class EnemyPatrol : MonoBehaviour {
         }
         _once = false;
     }
+
+
+
+    private void RotateEnemy() {
+
+
+        Vector3 relativePos = _patrolPointsTransform[_currentPoint].position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+
+        Quaternion current = transform.localRotation;
+
+        transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime * _enemySpeed);
+
+    }
+
 }

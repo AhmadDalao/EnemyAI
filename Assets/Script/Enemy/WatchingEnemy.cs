@@ -13,6 +13,12 @@ public class WatchingEnemy : MonoBehaviour {
 
     [SerializeField] private LineRenderer _lineOfSights;
 
+
+    private float projectileTimer;
+    private float projectileTimerDelay = 1f;
+    [SerializeField] private GameObject _projectile;
+
+
     private void Update() {
 
 
@@ -35,10 +41,25 @@ public class WatchingEnemy : MonoBehaviour {
 
                 Debug.DrawLine(transform.position, raycastHit.point, Color.red, 1f);
 
+
+
                 _lineOfSights.SetPosition(1, raycastHit.point);
                 _lineOfSights.transform.Rotate(Vector3.up * _rotationSpeed * Time.deltaTime);
                 _lineOfSights.startColor = Color.red;
                 _lineOfSights.endColor = Color.red;
+
+
+                // if enemy watcher found a player shot at him.
+
+                if (raycastHit.transform.GetComponent<Player>() != null) {
+
+                    // Attack
+                    if (projectileTimer < Time.time) {
+                        Instantiate(_projectile, transform.position, Quaternion.identity);
+                        projectileTimer = Time.time + projectileTimerDelay;
+                    }
+
+                }
 
 
             }
